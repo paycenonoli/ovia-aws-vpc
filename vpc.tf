@@ -45,6 +45,22 @@ resource "aws_subnet" "public-subnet-2" {
   }
 }
 
+# Create Route Table and add public route
+# terraform aws create route table
+resource "aws_route_table" "public-route-table" {
+  vpc_id       = aws_vpc.ovia-vpc.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.ovia-igw.id
+  }
+
+  tags       = {
+    Name     = 
+  }
+}
+
+
 
 
 
