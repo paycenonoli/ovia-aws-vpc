@@ -10,3 +10,13 @@ resource "aws_vpc" "ovia-vpc" {
   }
 }
 
+# Create internet gateway and attach it to VPC
+# terraform aws create internet gateway
+resource "aws_internet_gateway" "ovia-igw" {
+  vpc_id    = aws_vpc.ovia-vpc.id
+
+  tags      = {
+    Name    = "ovia-igw"
+  }
+}
+
