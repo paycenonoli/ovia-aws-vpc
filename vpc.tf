@@ -56,9 +56,26 @@ resource "aws_route_table" "public-route-table" {
   }
 
   tags       = {
-    Name     = 
+    Name     = "Public Route Table"
   }
 }
+
+# Associate Public Subnet 1 to "Public Route Table"
+# terraform aws associate subnet with route table
+resource "aws_route_table_association" "public-subnet-1-route-table-association" {
+  subnet_id           = aws_subnet.public-subnet-1.id
+  route_table_id      = aws_route_table.public-route-table.id
+}
+
+# Associate Public Subnet 2 to "Public Route Table"
+# terraform aws associate subnet with route table
+resource "aws_route_table_association" "public-subnet-2-route-table-association" {
+  subnet_id           = aws_subnet.public-subnet-2.id
+  route_table_id      = aws_route_table.public-route-table.id
+}
+
+
+
 
 
 
